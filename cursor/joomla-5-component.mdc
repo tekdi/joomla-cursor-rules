@@ -1,5 +1,5 @@
 ---
-description: "A comprehensive set of rules for developing custom, installable Joomla 5 components that adhere to core MVC, security, and coding standards."
+description: A comprehensive set of rules for developing custom, installable Joomla 5 components that adhere to core MVC, security, and coding standards.
 globs:
 alwaysApply: false
 ---

@@ -1,5 +1,5 @@
 ---
-description:
+description: A comprehensive set of rules and best practices for developing modern, secure, and compliant Joomla 5 plugins. These rules cover file structure, manifest conventions, dependency injection, security, and coding standards.
 globs:
 alwaysApply: false
 ---
