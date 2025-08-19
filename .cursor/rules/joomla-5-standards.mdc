@@ -1,7 +1,7 @@
 ---
-description:
-globs:
-alwaysApply: false
+description: Comprehensive Joomla 5 development standards covering PSR-12, security best practices, coding conventions, and integration guidelines for professional Joomla development.
+globs: *.php,*.xml,*.ini,*.js,*.css
+alwaysApply: true
 ---
 # Joomla 5 Development – Standard Rules Followed by Best Developers
 
@@ -16,21 +16,31 @@ alwaysApply: false
 - Use `camelCase` for variables/methods, `PascalCase` for classes
 - Avoid procedural code; use **OOP principles**
 - Split logic into **Services**, **Helpers**, **Models**, and **Controllers**
-- Follow **DRY** (Don’t Repeat Yourself) and **SRP** (Single Responsibility Principle)
+- Follow **DRY** (Don't Repeat Yourself) and **SRP** (Single Responsibility Principle)
 
 ---
 
 ## PROJECT STRUCTURE
 
-- Always include:
-  - `access.xml`
-  - `config.xml`
-  - `manifest.xml`
-- Component folders:
-  - `admin/`, `site/`, `api/`, `media/`
-- Use consistent namespacing:
-  - `Joomla\Component\<ComponentName>\<ClientType>\...`
-- Use `src/` folders for source classes
+**✅ CRITICAL: Correct Joomla 5 Folder Structure**
+
+- **`src/` folder goes at COMPONENT ROOT level, NOT inside admin/ or site/ folders!**
+- Always include: `access.xml`, `config.xml`, `manifest.xml`
+- Component structure:
+```
+com_mycomponent/
+├── admin/                      # Administrator interface files
+├── site/                       # Site interface files  
+├── api/                        # API interface files (optional)
+├── src/                        # ← ROOT LEVEL SOURCE CODE
+│   ├── Administrator/          # Admin namespace classes
+│   ├── Site/                   # Site namespace classes
+│   └── Api/                    # API namespace classes
+├── media/                      # Assets (CSS, JS, images)
+└── mycomponent.xml             # Component manifest
+```
+- Use consistent namespacing: `Joomla\Component\<ComponentName>\<ClientType>\...`
+- Manifest namespace: `<namespace path="src">Joomla\Component\Yourcomponent</namespace>`
 
 ---
 
@@ -44,7 +54,7 @@ alwaysApply: false
 - Use `Session::checkToken()` for CSRF validation
 - Sanitize database input via:
   - `quote()`, `quoteName()`, `bind()`
-- Avoid inline SQL — use Joomla’s QueryBuilder or ORM where applicable
+- Avoid inline SQL — use Joomla's QueryBuilder or ORM where applicable
 
 ---
 
@@ -132,7 +142,7 @@ Use the following Joomla core APIs as much as possible:
 
 ## MISC
 
-- Don’t modify Joomla core files
+- Don't modify Joomla core files
 - Prefer **Joomla native solutions** over third-party libraries unless necessary
-- Support Joomla’s **accessibility and multilingual features**
+- Support Joomla's **accessibility and multilingual features**
 - Use **categories**, **tags**, and **menus** via core components where possible

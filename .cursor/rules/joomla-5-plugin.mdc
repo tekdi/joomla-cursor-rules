@@ -1,9 +1,8 @@
 ---
-description: A comprehensive set of rules and best practices for developing modern, secure, and compliant Joomla 5 plugins. These rules cover file structure, manifest conventions, dependency injection, security, and coding standards.
-globs:
+description: Comprehensive guidelines for developing modern, secure, and compliant Joomla 5 plugins covering file structure, manifest conventions, dependency injection, security, and coding standards.
+globs: *.php,*.xml,plugins/**/*
 alwaysApply: false
 ---
-
 # Joomla 5 Plugin Development Cursor Rules
 
 ## Plugin Structure & Basics
@@ -31,7 +30,7 @@ alwaysApply: false
 
 ## Dependency Injection (DI)
 
-- Use Joomla’s DI container (`Factory::getContainer()`) instead of old static methods
+- Use Joomla's DI container (`Factory::getContainer()`) instead of old static methods
 - Prefer `$this->app` and `$this->input` for accessing application and request data
 - Inject services like `DatabaseInterface`, `DispatcherInterface` via constructor if needed
 
@@ -54,19 +53,28 @@ alwaysApply: false
 - Use Joomla Debug plugin to trace events
 - Use `echo` or `dump()` only for early development
 
-## Security
 
-- Never use raw `$_POST`, `$_GET`, or `$_REQUEST`
-- Sanitize all input using Joomla's `FilterInput` or input object (`$this->input`)
-- Escape all output using `Text::script()`, `htmlspecialchars()`, or `$this->escape()`
-- Add CSRF token checks in any form or data-changing logic using:
-  - `Session::checkToken()` or `HtmlHelper::_('form.token')`
+## Common Plugin Types
+
+### System Plugins
+- **Purpose**: Core system operations, event handling, global functionality
+- **Events**: `onAfterInitialise`, `onBeforeRender`, `onAfterRender`
+- **Folder**: `plugins/system/myplugin/`
+
+### Content Plugins  
+- **Purpose**: Content processing, text manipulation, content injection
+- **Events**: `onContentPrepare`, `onContentAfterDisplay`, `onContentBeforeDisplay`
+- **Folder**: `plugins/content/myplugin/`
+
+### Authentication Plugins
+- **Purpose**: User authentication methods (LDAP, SSO, etc.)
+- **Events**: `onUserAuthenticate`, `onUserLogin`, `onUserLogout`
+- **Folder**: `plugins/authentication/myplugin/`
 
 ## Configuration Fields
 
 - Add fields in manifest using `<config>`
-- Use XML field types like:
-  - `text`, `textarea`, `list`, `radio`, `editor`, `sql`, etc.
+- Use XML field types: `text`, `textarea`, `list`, `radio`, `editor`, `sql`
 - Retrieve config values using `$this->params->get('field_name')`
 
 ## Event Priority (Advanced)
