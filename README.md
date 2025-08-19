@@ -92,20 +92,7 @@ Plugin structure, lifecycle management, **includes common plugin types** (system
 **File Types:** `*.php`, `api/**/*`, `components/**/api/**/*`
 Web Services development with authentication, serialization, and RESTful patterns.
 
-### Core Integration (`joomla-5-reuse-component.mdc`)
-**File Types:** `*.php`, `*.xml`, `components/**/*`
-Guidelines for integrating with core Joomla components like categories, users, media, and tags.
 
-### Standalone Development (`joomla-5-standalone.mdc`)
-**File Types:** `*.php`, `*.xml`, `*.css`, `*.js`
-Comprehensive guide for developing Joomla extensions independently without requiring a full Joomla installation.
-
-### Extension Packaging (`joomla-5-packaging.mdc`)
-**File Types:** `*.php`, `*.xml`, `*.json`, `package.json`, `Makefile`
-Guidelines for packaging extensions into installable ZIP files with build scripts and automated workflows.
-
-### Structure Correction (`joomla-5-structure-correction.mdc`)
-**Always Applied** - ⚠️ CRITICAL correction showing proper Joomla 5 folder structure with `src/` at component root level, not inside admin/site folders.
 
 ## 🛠️ Usage Examples
 
