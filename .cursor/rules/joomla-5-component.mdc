@@ -1,6 +1,6 @@
 ---
-description: A comprehensive set of rules for developing custom, installable Joomla 5 components that adhere to core MVC, security, and coding standards.
-globs:
+description: Comprehensive Joomla 5 component development guidelines covering MVC architecture, security, database interaction, routing, and ACL implementation.
+globs: *.php,*.xml,components/**/*
 alwaysApply: false
 ---
 # Joomla 5 Component Development Cursor Rules
@@ -13,8 +13,10 @@ alwaysApply: false
   - **Views** handle presentation only.
   - **Controllers** handle input processing and routing.
 - Generate components with **strict directory structure**:
-  - `admin/`, `site/`, and `api/` folders
-  - Inside each: `src/Model/`, `src/View/`, `src/Controller/`, `tmpl/`, `sql/`, `services/`, and `media/`
+  - `admin/`, `site/`, and `api/` folders for interface files
+  - `src/` folder at component root for all PHP classes
+  - Inside `src/`: `Administrator/`, `Site/`, `Api/` subfolders
+  - Admin folder contains: `tmpl/`, `sql/`, `services/`, `forms/`, `language/`
 - Use `JPATH_COMPONENT_ADMINISTRATOR`, `JPATH_COMPONENT_SITE`, etc., for paths.
 
 ---
@@ -52,7 +54,7 @@ alwaysApply: false
 
 ##  Database Interaction
 
-- Use Joomla’s query builder API.
+- Use Joomla's query builder API.
   - Quote table/column names using `quoteName()`
   - Quote values using `quote()`
 - Use parameterized queries with `bind()` for security.
@@ -128,4 +130,3 @@ alwaysApply: false
 - Avoid deprecated classes: `JRequest`, `JFactory::getDbo()`, etc.
 - Ensure all forms and controllers are CSRF-protected.
 - Support Joomla 5 update system via `<updateservers>` in manifest.
-```
